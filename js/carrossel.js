@@ -1,60 +1,111 @@
 // ==========================================================
 // CARROSSEL DA HOME
 //
-// Como funciona:
-// - No CSS, todo slide começa escondido (display: none).
-// - Só aparece o slide que tem a classe "ativo".
-// - Este arquivo só tira a classe "ativo" de um slide
-//   e coloca em outro.
+// Mesma ideia do carrossel visto em aula:
+// - uma lista (array) com os slides e um "indice" que diz qual aparece;
+// - avancar e voltar mudam o indice com if/else;
+// - setInterval troca sozinho, e clearInterval reinicia o tempo
+//   quando a pessoa clica.
 //
-// Os botões do HTML chamam as funções daqui pelo onclick:
-//   seta direita  -> proximoSlide()
-//   seta esquerda -> slideAnterior()
-//   bolinhas      -> mostrarSlide(0), mostrarSlide(1), mostrarSlide(2)
+// A diferença: em aula só a foto trocava (moldura.src).
+// Aqui cada slide tem foto ou vídeo, título e botão, então em vez
+// de trocar a foto, a gente mostra um slide e esconde os outros
+// com style.display.
 // ==========================================================
 
-// Lista com todos os slides e todas as bolinhas da página
-var slides = document.querySelectorAll(".slide");
-var bolinhas = document.querySelectorAll(".bolinha");
+var botaoVoltar;
+var botaoAvancar;
+var slides;
+var bolinhas;
+var indice;
+var temporizador;
 
-// Número do slide que está aparecendo (o primeiro é o 0)
-var atual = 0;
+botaoVoltar  = document.getElementById("btnVoltar");
+botaoAvancar = document.getElementById("btnAvancar");
 
-// Mostra o slide do número recebido e esconde os outros
-function mostrarSlide(numero) {
+// Os ids dos slides e das bolinhas, na ordem em que aparecem
+slides   = ["slide1", "slide2", "slide3"];
+bolinhas = ["bolinha1", "bolinha2", "bolinha3"];
 
-    // Se passou do último, volta para o primeiro
-    if (numero >= slides.length) {
-        numero = 0;
-    }
+// Começa no primeiro slide (o primeiro item do array é o 0)
+indice = 0;
 
-    // Se voltou antes do primeiro, vai para o último
-    if (numero < 0) {
-        numero = slides.length - 1;
-    }
+window.onload = inicio;
 
-    // Tira a classe "ativo" de todos os slides e bolinhas
-    for (var i = 0; i < slides.length; i++) {
-        slides[i].classList.remove("ativo");
-        bolinhas[i].classList.remove("ativo");
-    }
+function inicio(){
 
-    // Coloca a classe "ativo" só no slide e na bolinha escolhidos
-    slides[numero].classList.add("ativo");
-    bolinhas[numero].classList.add("ativo");
+    botaoVoltar.onclick  = voltarSlide;
+    botaoAvancar.onclick = avancarSlide;
 
-    // Guarda qual slide está aparecendo agora
-    atual = numero;
+    // Cada bolinha leva para o seu slide
+    document.getElementById("bolinha1").onclick = function(){
+        irParaSlide(0);
+    };
+    document.getElementById("bolinha2").onclick = function(){
+        irParaSlide(1);
+    };
+    document.getElementById("bolinha3").onclick = function(){
+        irParaSlide(2);
+    };
+
+    mostrarSlide();
+    automaticoSlide();
 }
 
-function proximoSlide() {
-    mostrarSlide(atual + 1);
+function voltarSlide(){
+
+    if(indice > 0){
+        indice--;
+    }
+    else{
+        // Estava no primeiro: vai para o último
+        indice = slides.length - 1;
+    }
+
+    mostrarSlide();
+    clearInterval(temporizador);
+    automaticoSlide();
 }
 
-function slideAnterior() {
-    mostrarSlide(atual - 1);
+function avancarSlide(){
+
+    if(indice < slides.length - 1){
+        indice++;
+    }
+    else{
+        // Estava no último: volta para o primeiro
+        indice = 0;
+    }
+
+    mostrarSlide();
+    clearInterval(temporizador);
+    automaticoSlide();
+}
+
+function irParaSlide(numero){
+
+    indice = numero;
+
+    mostrarSlide();
+    clearInterval(temporizador);
+    automaticoSlide();
 }
 
 // Troca de slide sozinho a cada 8000 milissegundos (8 segundos).
 // Para mudar o tempo, troque o 8000.
-setInterval(proximoSlide, 8000);
+function automaticoSlide(){
+
+    temporizador = setInterval(avancarSlide, 8000);
+}
+
+// Esconde todos os slides e mostra só o do indice atual
+function mostrarSlide(){
+
+    for(var i = 0; i < slides.length; i++){
+        document.getElementById(slides[i]).style.display = "none";
+        document.getElementById(bolinhas[i]).className = "bolinha";
+    }
+
+    document.getElementById(slides[indice]).style.display = "block";
+    document.getElementById(bolinhas[indice]).className = "bolinha ativo";
+}

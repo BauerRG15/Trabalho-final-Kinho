@@ -144,11 +144,13 @@ h1, h2, h3 {
 }
 
 .slide {
-    display: none; /* só o slide com a classe "ativo" aparece */
+    display: none; /* todos os slides começam escondidos */
     height: 100%;
 }
 
-.slide.ativo {
+/* O primeiro slide já aparece ao abrir a página.
+   Depois o JavaScript mostra e esconde os slides com style.display */
+#slide1 {
     display: block;
 }
 

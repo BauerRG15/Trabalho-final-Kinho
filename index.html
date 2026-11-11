@@ -41,7 +41,7 @@
         <!-- Carrossel controlado pelo arquivo js/carrossel.js -->
         <section class="carrossel" aria-label="Destaques do bar">
 
-            <figure class="slide ativo">
+            <figure class="slide" id="slide1">
                 <!-- Vídeo de fundo: autoplay (toca sozinho), muted (sem som, obrigatório para tocar sozinho),
                      loop (repete), playsinline (no celular toca dentro da página)
                      e poster (foto que aparece enquanto o vídeo carrega ou se ele não tocar) -->
@@ -55,7 +55,7 @@
                 </figcaption>
             </figure>
 
-            <figure class="slide foto-alta">
+            <figure class="slide foto-alta" id="slide2">
                 <img src="img/foto-parede-neon.jpg" alt="Cliente brindando em frente à parede de neon e assinaturas do bar">
                 <figcaption class="legenda">
                     <p class="sobretitulo">Toda semana</p>
@@ -65,7 +65,7 @@
                 </figcaption>
             </figure>
 
-            <figure class="slide">
+            <figure class="slide" id="slide3">
                 <img src="img/foto-drinks.jpg" alt="Dois drinks com limão e borda de sal">
                 <figcaption class="legenda">
                     <p class="sobretitulo">Da casa</p>
@@ -75,13 +75,13 @@
                 </figcaption>
             </figure>
 
-            <button class="seta anterior" onclick="slideAnterior()" aria-label="Slide anterior">&#10094;</button>
-            <button class="seta proximo" onclick="proximoSlide()" aria-label="Próximo slide">&#10095;</button>
+            <button class="seta anterior" id="btnVoltar" aria-label="Slide anterior">&#10094;</button>
+            <button class="seta proximo" id="btnAvancar" aria-label="Próximo slide">&#10095;</button>
 
             <nav class="indicadores">
-                <button class="bolinha ativo" onclick="mostrarSlide(0)" aria-label="Ir para o slide 1"></button>
-                <button class="bolinha" onclick="mostrarSlide(1)" aria-label="Ir para o slide 2"></button>
-                <button class="bolinha" onclick="mostrarSlide(2)" aria-label="Ir para o slide 3"></button>
+                <button class="bolinha ativo" id="bolinha1" aria-label="Ir para o slide 1"></button>
+                <button class="bolinha" id="bolinha2" aria-label="Ir para o slide 2"></button>
+                <button class="bolinha" id="bolinha3" aria-label="Ir para o slide 3"></button>
             </nav>
         </section>
 
