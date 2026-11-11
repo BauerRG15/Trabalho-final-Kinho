@@ -138,9 +138,6 @@ h1, h2, h3 {
     left: 8%;
     bottom: 15%;
     max-width: 560px;
-    padding: 24px;
-    background-color: #120a1c;
-    border-radius: 12px;
 }
 
 .legenda h1,
@@ -307,13 +304,9 @@ h1, h2, h3 {
 }
 
 .banner-pagina h1 {
-    display: inline-block;
-    padding: 8px 32px;
     font-family: "Retro Signature", cursive;
     font-weight: normal;
     font-size: 56px;
-    background-color: #120a1c;
-    border-radius: 12px;
 }
 
 /* Duas colunas lado a lado (Sobre e Eventos) */
