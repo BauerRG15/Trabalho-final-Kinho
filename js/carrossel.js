@@ -55,6 +55,6 @@ function slideAnterior() {
     mostrarSlide(atual - 1);
 }
 
-// Troca de slide sozinho a cada 5000 milissegundos (5 segundos).
-// Para mudar o tempo, troque o 5000.
-setInterval(proximoSlide, 5000);
+// Troca de slide sozinho a cada 8000 milissegundos (8 segundos).
+// Para mudar o tempo, troque o 8000.
+setInterval(proximoSlide, 8000);
