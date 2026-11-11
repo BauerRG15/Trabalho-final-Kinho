@@ -4,7 +4,7 @@
     <!-- Metas estudados em aula -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Fale com o Bar Purple Rain: reservas, endereço, horário de funcionamento e redes sociais.">
+    <meta name="description" content="Fale com o Bar Purple Rain pelo WhatsApp: endereço, horário de funcionamento e redes sociais.">
     <meta name="keywords" content="Bar Purple Rain, bar, pub, Rua Coberta, Criciúma, música ao vivo, drinks, chopp, petiscos">
     <meta name="author" content="Rafael Bauer Giroleti & Weslley Donmingos">
     <meta name="robots" content="index, follow">
@@ -12,14 +12,14 @@
     <title>Contato | Bar Purple Rain</title>
 
     <!-- Ícone na aba do navegador -->
-    <link rel="icon" type="image/png" href="img/logo.png">
+    <link rel="icon" type="image/png" href="img/Favicon.png">
     <link rel="stylesheet" href="css/estilo.css">
 </head>
 <body>
 
     <header class="cabecalho">
         <a href="index.html" class="logo">
-            <img src="img/logo.png" alt="Bar Purple Rain">
+            <img src="img/Favicon.png" alt="Bar Purple Rain">
         </a>
         <nav class="menu">
             <ul>
@@ -34,42 +34,25 @@
 
     <main>
         <section class="banner-pagina">
-            <h1>Contato e reservas</h1>
+            <h1>Contato</h1>
         </section>
 
         <section class="secao duas-colunas">
             <article class="coluna">
-                <h2>Envie sua mensagem</h2>
-                <!-- Validado pelo arquivo js/contato.js -->
-                <form id="form-contato" class="formulario">
-                    <label for="nome">Nome</label>
-                    <input type="text" id="nome" name="nome" placeholder="Seu nome completo">
-
-                    <label for="email">E-mail</label>
-                    <input type="text" id="email" name="email" placeholder="voce@exemplo.com">
-
-                    <label for="assunto">Assunto</label>
-                    <select id="assunto" name="assunto">
-                        <option value="reserva">Reserva de mesa</option>
-                        <option value="aniversario">Aniversário</option>
-                        <option value="banda">Quero tocar no bar</option>
-                        <option value="outro">Outro assunto</option>
-                    </select>
-
-                    <label for="pessoas">Número de pessoas</label>
-                    <input type="number" id="pessoas" name="pessoas" value="2" min="1" max="30">
-
-                    <label for="texto">Mensagem</label>
-                    <textarea id="texto" name="texto" rows="5" placeholder="Conte o dia e o horário desejados"></textarea>
-
-                    <button type="button" class="botao" onclick="enviar()">Enviar</button>
-                    <p id="mensagem" class="mensagem"></p>
-                </form>
+                <h2>Fale com a gente</h2>
+                <p>Dúvidas, aniversários, eventos ou quer tocar no bar? Mande uma mensagem direto no nosso WhatsApp.</p>
+                <!-- Botão do WhatsApp: o link wa.me abre uma conversa com o número do bar.
+                 TROCAR: o 5548000000000 pelo número real (55 + DDD + número, só números).
+                 O texto depois de ?text= é a mensagem que já vem escrita (espaço vira %20). -->
+                <a href="https://wa.me/5548000000000?text=Ol%C3%A1%2C%20Purple%20Rain!%20Vim%20pelo%20site." target="_blank" class="botao botao-whatsapp">
+                    <img src="img/whatsapp.svg" alt="">
+                    Chamar no WhatsApp
+                </a>
             </article>
 
             <aside class="coluna">
                 <h2>Onde estamos</h2>
-                <!-- Dados do Instagram @barpurplerain. TROCAR: incluir telefone/WhatsApp e e-mail se o cliente quiser -->
+                <!-- Dados do Instagram @barpurplerain -->
                 <ul class="lista-simples">
                     <li><strong>Endereço:</strong> Travessa Henrique Lodetti, 34 (Rua Coberta) - Centro - Criciúma/SC</li>
                     <li><strong>Instagram:</strong> <a href="https://www.instagram.com/barpurplerain/" target="_blank">@barpurplerain</a></li>
@@ -99,7 +82,6 @@
         <p class="copy">&copy; 2026 Bar Purple Rain. Site desenvolvido na disciplina Desenvolvimento de Aplicações I - UNESC.</p>
     </footer>
 
-    <script src="js/contato.js"></script>
 
 </body>
 </html>

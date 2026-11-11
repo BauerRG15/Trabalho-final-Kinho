@@ -3,7 +3,44 @@
    Organização: 1) base  2) cabeçalho  3) carrossel
                 4) seções e cartões  5) páginas internas
                 6) rodapé  7) responsividade (media queries)
+
+   Cores do site (para achar e trocar com Ctrl+F):
+     #120a1c  fundo escuro da página
+     #21133a  fundo dos cartões e campos
+     #7b2ff7  roxo dos botões e do menu (cor de ação)
+     #5dff9b  verde neon do logo (sobretítulos e preços)
+     #b83280  rosa do degradê do carrossel
+     #ffffff  títulos
+     #d6cdea  texto comum (lilás claro)
    ========================================================== */
+
+/* ---------- 0) FONTES DO BAR ----------
+   @font-face "instala" uma fonte que está na pasta fontes/.
+   Depois é só usar o nome dela no font-family.
+   - Chakra Petch: textos e títulos (3 pesos: normal, semibold e negrito)
+   - Retro Signature: letra de assinatura, igual ao logo (só nos títulos grandes) */
+@font-face {
+    font-family: "Chakra Petch";
+    src: url("../fontes/ChakraPetch-Regular.ttf");
+    font-weight: 400;
+}
+
+@font-face {
+    font-family: "Chakra Petch";
+    src: url("../fontes/ChakraPetch-SemiBold.ttf");
+    font-weight: 600;
+}
+
+@font-face {
+    font-family: "Chakra Petch";
+    src: url("../fontes/ChakraPetch-Bold.ttf");
+    font-weight: 700;
+}
+
+@font-face {
+    font-family: "Retro Signature";
+    src: url("../fontes/RetroSignature.otf");
+}
 
 /* ---------- 1) BASE ---------- */
 * {
@@ -13,10 +50,10 @@
 }
 
 body {
-    font-family: Verdana, Arial, sans-serif;
-    font-size: 16px;
-    line-height: 1.6;
-    color: #f1e9fb;
+    font-family: "Chakra Petch", Arial, sans-serif;
+    font-size: 17px;
+    line-height: 1.5;
+    color: #d6cdea;
     background-color: #120a1c;
 }
 
@@ -29,38 +66,53 @@ a {
     color: #c9a0ff;
 }
 
+/* Títulos: letra pesada, em maiúsculas e com linhas bem juntas */
 h1, h2, h3 {
-    font-family: Georgia, "Times New Roman", serif;
-    line-height: 1.2;
+    font-family: "Chakra Petch", Arial, sans-serif;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: -0.01em;
+    line-height: 1;
+    color: #ffffff;
+}
+
+/* Sobretítulo: frase pequena que fica em cima de um título */
+.sobretitulo {
+    font-size: 14px;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: #5dff9b;
+    margin-bottom: 12px;
+}
+
+/* Títulos grandes em letra de assinatura, como o logo */
+.legenda h1,
+.legenda h2,
+.banner-pagina h1 {
+    font-family: "Retro Signature", cursive;
+    font-weight: normal;
+    text-transform: none; /* letra de assinatura não fica em maiúsculas */
+    letter-spacing: 0;
+    line-height: 1.3;
+}
+
+.sobretitulo.centro {
+    text-align: center;
 }
 
 /* ---------- 2) CABEÇALHO ---------- */
 .cabecalho {
     background-color: #000000;
-    border-bottom: 2px solid #7b2ff7;
     display: flex;
     justify-content: space-between;
     align-items: center;
     padding: 6px 5%; /* 5% de espaço em cada lado */
 }
 
-.logo {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    color: #ffffff;
-    text-decoration: none;
-    font-family: Georgia, serif;
-    font-size: 22px;
-    font-weight: bold;
-}
-
 .logo img {
-    /* o logo tem fundo preto, igual ao cabeçalho;
-       object-fit: cover corta a sobra preta de cima e de baixo */
-    width: 150px;
-    height: 90px;
-    object-fit: cover;
+    height: 64px; /* a largura acompanha sozinha */
+    width: auto;
 }
 
 .menu ul {
@@ -71,22 +123,22 @@ h1, h2, h3 {
 
 .menu a {
     display: block;
-    padding: 8px 14px;
-    color: #f1e9fb;
+    padding: 10px 16px;
+    color: #ffffff;
+    font-weight: bold;
     text-decoration: none;
-    border-radius: 20px;
+    border-radius: 30px;
 }
 
 .menu a:hover,
 .menu a.atual {
     background-color: #7b2ff7;
-    color: #ffffff;
 }
 
 /* ---------- 3) CARROSSEL ---------- */
 .carrossel {
     position: relative; /* referência para setas, legenda e bolinhas */
-    height: 480px;
+    height: 560px;
     overflow: hidden;
     background-color: #1a0f2b;
 }
@@ -100,29 +152,55 @@ h1, h2, h3 {
     display: block;
 }
 
-.slide img {
+/* Foto ou vídeo ocupam o slide todo; object-fit: cover corta a sobra */
+.slide img,
+.slide video {
     width: 100%;
     height: 100%;
     object-fit: cover;
+    display: block;
+}
+
+/* Película escura por cima da foto para o texto ficar legível */
+.slide::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: linear-gradient(to right, #120a1c, transparent 70%);
+}
+
+/* A foto da parede é em pé: mostra a parte de cima, onde está o neon */
+.slide.foto-alta img {
+    object-position: center 30%;
 }
 
 .legenda {
     position: absolute;
     left: 8%;
-    bottom: 22%;
-    max-width: 560px;
+    bottom: 24%;
+    max-width: 620px;
+    z-index: 2; /* fica na frente do degradê */
 }
 
 .legenda h1,
 .legenda h2 {
-    font-size: 44px;
-    color: #ffffff;
-    margin-bottom: 10px;
+    font-size: 80px;
+    margin-bottom: 16px;
 }
 
 .legenda p {
-    font-size: 18px;
-    margin-bottom: 18px;
+    font-size: 20px;
+    color: #ffffff;
+    margin-bottom: 24px;
+}
+
+.legenda .sobretitulo {
+    font-size: 14px;
+    color: #5dff9b;
+    margin-bottom: 12px;
 }
 
 .seta {
@@ -138,6 +216,7 @@ h1, h2, h3 {
     color: #ffffff;
     font-size: 24px;
     cursor: pointer;
+    z-index: 2;
 }
 
 .seta:hover {
@@ -156,6 +235,7 @@ h1, h2, h3 {
     display: flex;
     justify-content: center;
     gap: 10px;
+    z-index: 2;
 }
 
 .bolinha {
@@ -168,33 +248,32 @@ h1, h2, h3 {
 }
 
 .bolinha.ativo {
-    background-color: #c77dff;
+    background-color: #ffffff;
 }
 
-/* Degradê da Home: carrossel -> rosa -> fundo escuro.
-   É feito em duas partes que se encostam:
-   1) .carrossel::before: faixa no pé do carrossel, do transparente até o rosa.
-      O ::before cria essa faixa pelo CSS, sem precisar de uma tag no HTML.
-   2) .degrade-rosa: a seção logo abaixo, do rosa até a cor do site
-   Para trocar o rosa, mude o #b83280 nos DOIS lugares. */
+/* Degradê no pé do carrossel: imagem -> rosa -> fundo escuro, de forma suave.
+   O ::before cria uma faixa pelo CSS, sem precisar de uma tag no HTML.
+   O degradê tem 3 cores e os números dizem onde cada uma fica:
+     0%   transparente (aparece a imagem)
+     45%  rosa
+     100% a cor de fundo do site, para emendar sem linha com a seção de baixo
+   - Para mudar o rosa: troque o #b83280.
+   - Para o rosa durar mais ou menos: troque o 45%.
+   - Para a faixa ficar mais alta ou mais baixa: troque o height. */
 .carrossel::before {
     content: ""; /* obrigatório para o ::before aparecer */
     position: absolute;
     left: 0;
     bottom: 0;
     width: 100%;
-    height: 250px;
-    background-image: linear-gradient(to bottom, transparent 0%, #b332cd 75%, #120a1c 100%);
-}
-
-.secao.degrade-rosa {
-    background-image: linear-gradient(to bottom, #b332cd 0px, #120a1c 240px);
-    padding-top: 130px; /* empurra o título para a parte já escura */
+    height: 280px;
+    background-image: linear-gradient(to bottom, transparent 0%, #b83280 45%, #120a1c 100%);
+    z-index: 1;
 }
 
 /* ---------- 4) SEÇÕES E CARTÕES ---------- */
 .secao {
-    padding: 60px 5%; /* 5% de espaço em cada lado */
+    padding: 80px 5%; /* 5% de espaço em cada lado */
 }
 
 .secao.escura {
@@ -202,15 +281,15 @@ h1, h2, h3 {
 }
 
 .titulo-secao {
-    font-size: 32px;
+    font-size: 40px;
     text-align: center;
-    margin-bottom: 8px;
+    margin-bottom: 16px;
 }
 
 .subtitulo-secao {
+    font-size: 18px;
     text-align: center;
-    color: #bfa8dd;
-    margin-bottom: 36px;
+    margin-bottom: 40px;
 }
 
 .cartoes {
@@ -223,38 +302,68 @@ h1, h2, h3 {
     flex: 1;          /* os cartões dividem a linha em partes iguais */
     min-width: 260px; /* se não couber, o cartão desce para a linha de baixo */
     background-color: #21133a;
-    border: 1px solid #3c1a78;
-    border-radius: 12px;
-    padding: 24px;
+    border-radius: 24px;
+    padding: 32px;
 }
 
 .cartao h3 {
-    color: #c77dff;
-    margin-bottom: 10px;
+    font-size: 22px;
+    margin-bottom: 12px;
 }
 
-.cartao .destaque {
-    display: block;
-    font-size: 14px;
-    color: #5dff9b;
-    margin-bottom: 6px;
+.cartao p {
+    margin-bottom: 16px;
 }
 
+/* Cartões coloridos da Home: cada um tem o seu degradê */
+.cartao.roxo  { background-image: linear-gradient(135deg, #4a1a94, #a0307f); }
+.cartao.verde { background-image: linear-gradient(135deg, #0b4f35, #1c8f5c); }
+.cartao.azul  { background-image: linear-gradient(135deg, #251a6b, #5a3fd0); }
+
+.cartao.roxo p,
+.cartao.verde p,
+.cartao.azul p {
+    color: #ffffff;
+}
+
+/* Botão principal: roxo, em formato de pílula */
 .botao {
     display: inline-block;
-    padding: 12px 26px;
+    padding: 16px 24px;
     background-color: #7b2ff7;
     color: #ffffff;
     text-decoration: none;
     border: none;
-    border-radius: 26px;
+    border-radius: 40px;
     font-size: 16px;
     font-weight: bold;
     cursor: pointer;
 }
 
 .botao:hover {
-    background-color: #9b4dff;
+    background-color: #5a1fd0;
+}
+
+/* Botão secundário: branco, para ficar ao lado do roxo */
+.botao.claro {
+    background-color: #ffffff;
+    color: #120a1c;
+    margin-left: 8px;
+}
+
+.botao.claro:hover {
+    background-color: #d6cdea;
+}
+
+/* Link de texto com seta, sem fundo */
+.link-seta {
+    color: #ffffff;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+.link-seta:hover {
+    text-decoration: underline;
 }
 
 .chamada {
@@ -262,7 +371,7 @@ h1, h2, h3 {
 }
 
 .chamada p {
-    margin-bottom: 20px;
+    margin-bottom: 24px;
 }
 
 /* ---------- 5) PÁGINAS INTERNAS ---------- */
@@ -271,21 +380,21 @@ h1, h2, h3 {
        1º) um degradê que começa transparente e termina na cor do site (#120a1c)
        2º) a imagem do banner
        Assim o banner "derrete" no fundo da página, sem linha de corte. */
-    background-image: linear-gradient(to bottom, transparent 30%, #120a1c 100%), url("../img/slide2.svg");
+    background-image: linear-gradient(to bottom, transparent 30%, #120a1c 100%), url("../img/foto-parede-neon.jpg");
     background-size: cover;
     background-position: center;
-    padding: 70px 5% 110px 5%; /* mais espaço embaixo para o degradê aparecer */
+    background-position: center 30%;
+    padding: 80px 5% 120px 5%; /* mais espaço embaixo para o degradê aparecer */
     text-align: center;
 }
 
 .banner-pagina h1 {
-    font-size: 40px;
-    color: #ffffff;
+    font-size: 72px;
 }
 
 .duas-colunas {
     display: flex;
-    gap: 40px;
+    gap: 48px;
     align-items: flex-start;
 }
 
@@ -294,12 +403,12 @@ h1, h2, h3 {
 }
 
 .duas-colunas h2 {
-    margin-bottom: 12px;
-    color: #c77dff;
+    font-size: 28px;
+    margin-bottom: 16px;
 }
 
 .duas-colunas p {
-    margin-bottom: 14px;
+    margin-bottom: 16px;
 }
 
 .lista-simples {
@@ -307,7 +416,7 @@ h1, h2, h3 {
 }
 
 .lista-simples li {
-    padding: 8px 0;
+    padding: 12px 0;
     border-bottom: 1px solid #3c1a78;
 }
 
@@ -320,19 +429,25 @@ h1, h2, h3 {
     display: flex;
     justify-content: space-between;
     gap: 16px;
-    padding: 10px 0;
-    border-bottom: 1px dashed #3c1a78;
+    padding: 12px 0;
+    border-bottom: 1px solid #3c1a78;
+    color: #ffffff;
+    font-weight: bold;
+}
+
+.item-cardapio p {
+    margin-bottom: 0;
 }
 
 .item-cardapio span {
-    color: #bfa8dd;
+    color: #d6cdea;
     font-size: 14px;
+    font-weight: normal;
     display: block;
 }
 
 .preco {
     color: #5dff9b;
-    font-weight: bold;
     white-space: nowrap;
 }
 
@@ -344,72 +459,103 @@ h1, h2, h3 {
 
 .tabela-eventos th,
 .tabela-eventos td {
-    padding: 12px;
+    padding: 16px 12px;
     text-align: left;
     border-bottom: 1px solid #3c1a78;
 }
 
 .tabela-eventos th {
-    background-color: #3c1a78;
+    font-size: 14px;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: #5dff9b;
 }
 
-/* Formulário de contato */
-.formulario label {
-    display: block;
-    margin-bottom: 4px;
-    font-weight: bold;
+/* Botão do WhatsApp: verde da marca, com o ícone ao lado do texto */
+.botao-whatsapp {
+    display: inline-flex;   /* deixa ícone e texto lado a lado */
+    align-items: center;    /* centraliza o ícone na altura do texto */
+    gap: 10px;
+    background-color: #25d366;
+    color: #0b2e1a;
 }
 
-.formulario input,
-.formulario select,
-.formulario textarea {
+.botao-whatsapp:hover {
+    background-color: #1ebe57;
+}
+
+.botao-whatsapp img {
+    width: 24px;
+    height: 24px;
+}
+
+/* Galeria de fotos (página Sobre) */
+.galeria {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 24px;
+}
+
+.galeria figure {
+    flex: 1;
+    min-width: 240px;
+}
+
+/* Fotos com moldura neon: borda roxa + brilho (box-shadow) em volta.
+   box-shadow: 0 0 30px = sem deslocamento, 30px de espalhamento do brilho. */
+.galeria img,
+.foto-coluna img {
     width: 100%;
-    padding: 10px;
-    margin-bottom: 16px;
-    border: 1px solid #3c1a78;
-    border-radius: 8px;
-    background-color: #21133a;
-    color: #f1e9fb;
-    font-family: inherit;
-    font-size: 16px;
+    object-fit: cover; /* todas as fotos ficam do mesmo tamanho */
+    border-radius: 24px;
+    border: 2px solid #7b2ff7;
+    box-shadow: 0 0 30px #7b2ff7;
+    transition: transform 0.3s, box-shadow 0.3s; /* anima a mudança do hover em 0,3 segundo */
 }
 
-.formulario input:focus,
-.formulario select:focus,
-.formulario textarea:focus {
-    outline: 2px solid #9b4dff;
+/* Ao passar o mouse: a foto cresce um pouco e o brilho fica rosa */
+.galeria img:hover,
+.foto-coluna img:hover {
+    transform: scale(1.03);
+    box-shadow: 0 0 40px #b83280;
 }
 
-.mensagem {
-    margin-top: 14px;
+.galeria img {
+    height: 380px;
+}
+
+.galeria figcaption {
+    margin-top: 10px;
     font-weight: bold;
+    color: #ffffff;
+    text-align: center;
 }
 
-.mensagem.erro    { color: #ff8fa3; }
-.mensagem.sucesso { color: #8ce99a; }
+/* Foto ao lado da tabela (página Eventos) */
+.foto-coluna img {
+    height: 420px;
+}
 
 /* ---------- 6) RODAPÉ ---------- */
 .rodape {
-    background-color: #0c0613;
-    border-top: 2px solid #7b2ff7;
-    padding: 30px 5%;
+    background-color: #000000;
+    padding: 40px 5%;
     font-size: 14px;
     display: flex;
     justify-content: space-between;
     flex-wrap: wrap;
-    gap: 20px;
+    gap: 24px;
 }
 
 .rodape h3 {
-    font-size: 16px;
-    color: #c77dff;
-    margin-bottom: 6px;
+    font-size: 14px;
+    letter-spacing: 0.05em;
+    margin-bottom: 8px;
 }
 
 .rodape .copy {
     width: 100%;
     text-align: center;
-    color: #bfa8dd;
 }
 
 /* ---------- 7) RESPONSIVIDADE ---------- */
@@ -417,7 +563,7 @@ h1, h2, h3 {
 /* Tablets: até 900px */
 @media (max-width: 900px) {
     .carrossel {
-        height: 380px;
+        height: 460px;
     }
 
     .legenda {
@@ -427,7 +573,11 @@ h1, h2, h3 {
 
     .legenda h1,
     .legenda h2 {
-        font-size: 34px;
+        font-size: 60px;
+    }
+
+    .titulo-secao {
+        font-size: 32px;
     }
 
     .duas-colunas {
@@ -453,23 +603,39 @@ h1, h2, h3 {
     }
 
     .carrossel {
-        height: 320px;
+        height: 440px;
     }
 
     .legenda {
         left: 5%;
         right: 5%;
-        bottom: 20%;
+        bottom: 18%;
         text-align: center;
     }
 
     .legenda h1,
     .legenda h2 {
-        font-size: 26px;
+        font-size: 46px;
+    }
+
+    .logo img {
+        height: 52px;
+    }
+
+    /* no celular a película escurece a foto toda, já que o texto fica no meio */
+    .slide::after {
+        background-image: none;
+        background-color: #120a1c;
+        opacity: 0.55;
     }
 
     .legenda p {
-        font-size: 15px;
+        font-size: 16px;
+    }
+
+    .botao.claro {
+        margin-left: 0;
+        margin-top: 8px;
     }
 
     .seta {
@@ -477,7 +643,11 @@ h1, h2, h3 {
     }
 
     .secao {
-        padding: 40px 5%;
+        padding: 48px 5%;
+    }
+
+    .titulo-secao {
+        font-size: 26px;
     }
 
     .duas-colunas {
@@ -485,12 +655,12 @@ h1, h2, h3 {
     }
 
     .banner-pagina h1 {
-        font-size: 30px;
+        font-size: 48px;
     }
 
     .tabela-eventos th,
     .tabela-eventos td {
-        padding: 8px 6px;
+        padding: 10px 6px;
         font-size: 14px;
     }
 

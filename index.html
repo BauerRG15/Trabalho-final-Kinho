@@ -12,14 +12,14 @@
     <title>Home | Bar Purple Rain</title>
 
     <!-- Ícone na aba do navegador -->
-    <link rel="icon" type="image/png" href="img/logo.png">
+    <link rel="icon" type="image/png" href="img/Favicon.png">
     <link rel="stylesheet" href="css/estilo.css">
 </head>
 <body>
 
     <header class="cabecalho">
         <a href="index.html" class="logo">
-            <img src="img/logo.png" alt="Bar Purple Rain">
+            <img src="img/Favicon.png" alt="Bar Purple Rain">
         </a>
         <nav class="menu">
             <ul>
@@ -37,18 +37,21 @@
         <section class="carrossel" aria-label="Destaques do bar">
 
             <figure class="slide ativo">
-                <img src="img/slide1.svg" alt="Luzes roxas do salão do Bar Purple Rain">
+                <!-- Vídeo de fundo: autoplay (toca sozinho), muted (sem som, obrigatório para tocar sozinho),
+                     loop (repete), playsinline (no celular toca dentro da página)
+                     e poster (foto que aparece enquanto o vídeo carrega ou se ele não tocar) -->
+                <video src="img/video-bar.mp4" poster="img/foto-drinks.jpg" autoplay muted loop playsinline></video>
                 <figcaption class="legenda">
                     <p class="sobretitulo">Rua Coberta · Criciúma</p>
                     <h1>Bar Purple Rain</h1>
                     <p>O bar da Rua Coberta de Criciúma.</p>
                     <a href="sobre.html" class="botao">Conheça o bar</a>
-                    <a href="contato.html" class="botao claro">Reservar mesa</a>
+                    <a href="eventos.html" class="botao claro">Ver agenda</a>
                 </figcaption>
             </figure>
 
-            <figure class="slide">
-                <img src="img/slide2.svg" alt="Palco com iluminação rosa para shows ao vivo">
+            <figure class="slide foto-alta">
+                <img src="img/foto-parede-neon.jpg" alt="Cliente brindando em frente à parede de neon e assinaturas do bar">
                 <figcaption class="legenda">
                     <p class="sobretitulo">Toda semana</p>
                     <h2>Música ao vivo</h2>
@@ -58,7 +61,7 @@
             </figure>
 
             <figure class="slide">
-                <img src="img/slide3.svg" alt="Balcão do bar com drinks e chopp">
+                <img src="img/foto-drinks.jpg" alt="Dois drinks com limão e borda de sal">
                 <figcaption class="legenda">
                     <p class="sobretitulo">Da casa</p>
                     <h2>Drinks e petiscos</h2>
@@ -95,17 +98,23 @@
                 </article>
                 <article class="cartao azul">
                     <h3>Ambiente para grupos</h3>
-                    <p>Mesas para a turma inteira e reserva para aniversários e confraternizações.</p>
-                    <a href="contato.html" class="link-seta">Reservar mesa &rarr;</a>
+                    <p>Espaço para a turma inteira curtir junto, de aniversários a confraternizações.</p>
+                    <a href="contato.html" class="link-seta">Fale com a gente &rarr;</a>
                 </article>
             </section>
         </section>
 
         <section class="secao escura chamada">
-            <p class="sobretitulo centro">Reservas</p>
-            <h2 class="titulo-secao">Reserve sua mesa</h2>
-            <p>Vai comemorar ou quer garantir lugar em dia de show? Fale com a gente.</p>
-            <a href="contato.html" class="botao">Fazer reserva</a>
+            <p class="sobretitulo centro">Contato</p>
+            <h2 class="titulo-secao">Chama a gente</h2>
+            <p>Dúvidas sobre a programação, aniversário ou evento? Fale direto com o bar.</p>
+            <!-- Botão do WhatsApp: o link wa.me abre uma conversa com o número do bar.
+                 TROCAR: o 5548000000000 pelo número real (55 + DDD + número, só números).
+                 O texto depois de ?text= é a mensagem que já vem escrita (espaço vira %20). -->
+            <a href="https://wa.me/5548000000000?text=Ol%C3%A1%2C%20Purple%20Rain!%20Vim%20pelo%20site." target="_blank" class="botao botao-whatsapp">
+                <img src="img/whatsapp.svg" alt="">
+                Chamar no WhatsApp
+            </a>
         </section>
     </main>
 
