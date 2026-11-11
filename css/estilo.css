@@ -369,14 +369,6 @@ h1, h2, h3 {
     text-decoration: underline;
 }
 
-.chamada {
-    text-align: center;
-}
-
-.chamada p {
-    margin-bottom: 24px;
-}
-
 /* ---------- 5) PÁGINAS INTERNAS ---------- */
 .banner-pagina {
     /* Dois fundos, um em cima do outro:
@@ -472,71 +464,6 @@ h1, h2, h3 {
     text-transform: uppercase;
     letter-spacing: 0.05em;
     color: #5dff9b;
-}
-
-/* Botão do WhatsApp: verde da marca, com o ícone ao lado do texto */
-.botao-whatsapp {
-    display: inline-flex;   /* deixa ícone e texto lado a lado */
-    align-items: center;    /* centraliza o ícone na altura do texto */
-    gap: 10px;
-    background-color: #25d366;
-    color: #0b2e1a;
-}
-
-.botao-whatsapp:hover {
-    background-color: #1ebe57;
-}
-
-.botao-whatsapp img {
-    width: 24px;
-    height: 24px;
-}
-
-/* Galeria de fotos (página Sobre) */
-.galeria {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 24px;
-}
-
-.galeria figure {
-    flex: 1;
-    min-width: 240px;
-}
-
-/* Fotos com moldura neon: borda roxa + brilho (box-shadow) em volta.
-   box-shadow: 0 0 30px = sem deslocamento, 30px de espalhamento do brilho. */
-.galeria img,
-.foto-coluna img {
-    width: 100%;
-    object-fit: cover; /* todas as fotos ficam do mesmo tamanho */
-    border-radius: 24px;
-    border: 2px solid #7b2ff7;
-    box-shadow: 0 0 30px #7b2ff7;
-    transition: transform 0.3s, box-shadow 0.3s; /* anima a mudança do hover em 0,3 segundo */
-}
-
-/* Ao passar o mouse: a foto cresce um pouco e o brilho fica rosa */
-.galeria img:hover,
-.foto-coluna img:hover {
-    transform: scale(1.03);
-    box-shadow: 0 0 40px #b83280;
-}
-
-.galeria img {
-    height: 380px;
-}
-
-.galeria figcaption {
-    margin-top: 10px;
-    font-weight: bold;
-    color: #ffffff;
-    text-align: center;
-}
-
-/* Foto ao lado da tabela (página Eventos) */
-.foto-coluna img {
-    height: 420px;
 }
 
 /* Mapa da página Contato */
