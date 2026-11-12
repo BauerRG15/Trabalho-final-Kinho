@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
-    <!-- Metas estudados em aula -->
+    <!-- Metas -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Bar Purple Rain, o bar da Rua Coberta de Criciúma: música ao vivo, drinks autorais, chopp gelado e petiscos para curtir com os amigos.">
@@ -11,8 +11,7 @@
 
     <title>Home | Bar Purple Rain</title>
 
-    <!-- Ícone na aba do navegador (favicon), em vários tamanhos.
-         Cada navegador e aparelho escolhe o tamanho que precisa. -->
+    <!-- Favicon -->
     <link rel="icon" type="image/x-icon" href="img/favicon/favicon.ico">
     <link rel="icon" type="image/png" sizes="32x32" href="img/favicon/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="img/favicon/favicon-16x16.png">
@@ -22,6 +21,7 @@
 </head>
 <body>
 
+    <!-- Cabeçalho e Menu -->
     <header class="cabecalho">
         <a href="index.html" class="logo">
             <img src="img/logo.png" alt="Bar Purple Rain">
@@ -38,13 +38,11 @@
     </header>
 
     <main>
-        <!-- Carrossel controlado pelo arquivo js/carrossel.js -->
+        <!-- Carrossel -->
         <section class="carrossel" aria-label="Destaques do bar">
 
+            <!-- Slide 1 -->
             <figure class="slide" id="slide1">
-                <!-- Vídeo de fundo: autoplay (toca sozinho), muted (sem som, obrigatório para tocar sozinho),
-                     loop (repete), playsinline (no celular toca dentro da página)
-                     e poster (foto que aparece enquanto o vídeo carrega ou se ele não tocar) -->
                 <video src="img/video-bar.mp4" poster="img/foto-drinks.jpg" autoplay muted loop playsinline></video>
                 <figcaption class="legenda">
                     <p class="sobretitulo">Rua Coberta · Criciúma</p>
@@ -55,6 +53,7 @@
                 </figcaption>
             </figure>
 
+            <!-- Slide 2 -->
             <figure class="slide foto-alta" id="slide2">
                 <img src="img/foto-parede-neon.jpg" alt="Cliente brindando em frente à parede de neon e assinaturas do bar">
                 <figcaption class="legenda">
@@ -65,6 +64,7 @@
                 </figcaption>
             </figure>
 
+            <!-- Slide 3 -->
             <figure class="slide" id="slide3">
                 <img src="img/foto-drinks.jpg" alt="Dois drinks com limão e borda de sal">
                 <figcaption class="legenda">
@@ -75,9 +75,11 @@
                 </figcaption>
             </figure>
 
+            <!-- Setas Carrossel -->
             <button class="seta anterior" id="btnVoltar" aria-label="Slide anterior">&#10094;</button>
             <button class="seta proximo" id="btnAvancar" aria-label="Próximo slide">&#10095;</button>
 
+            <!-- Bolinhas Carrossel -->
             <nav class="indicadores">
                 <button class="bolinha ativo" id="bolinha1" aria-label="Ir para o slide 1"></button>
                 <button class="bolinha" id="bolinha2" aria-label="Ir para o slide 2"></button>
@@ -85,6 +87,7 @@
             </nav>
         </section>
 
+        <!-- Cartões Home -->
         <section class="secao degrade">
             <p class="sobretitulo centro">A casa</p>
             <h2 class="titulo-secao">Por que vir ao Purple Rain</h2>
@@ -111,10 +114,10 @@
 
     </main>
 
+    <!-- Rodapé -->
     <footer class="rodape">
         <section>
             <h3>Bar Purple Rain</h3>
-            <!-- Dados do Instagram @barpurplerain -->
             <p>Travessa Henrique Lodetti, 34 (Rua Coberta)<br>Centro - Criciúma/SC</p>
         </section>
         <section>
@@ -129,6 +132,7 @@
         <p class="copy">&copy; 2026 Bar Purple Rain. Site desenvolvido na disciplina Desenvolvimento de Aplicações I - UNESC.</p>
     </footer>
 
+    <!-- JavaScript -->
     <script src="js/carrossel.js"></script>
 
 </body>

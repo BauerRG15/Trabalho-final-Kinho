@@ -1,18 +1,4 @@
-// ==========================================================
-// CARROSSEL DA HOME
-//
-// Mesma ideia do carrossel visto em aula:
-// - uma lista (array) com os slides e um "indice" que diz qual aparece;
-// - avancar e voltar mudam o indice com if/else;
-// - setInterval troca sozinho, e clearInterval reinicia o tempo
-//   quando a pessoa clica.
-//
-// A diferença: em aula só a foto trocava (moldura.src).
-// Aqui cada slide tem foto ou vídeo, título e botão, então em vez
-// de trocar a foto, a gente mostra um slide e esconde os outros
-// com style.display.
-// ==========================================================
-
+// Variáveis
 var botaoVoltar;
 var botaoAvancar;
 var slides;
@@ -23,13 +9,13 @@ var temporizador;
 botaoVoltar  = document.getElementById("btnVoltar");
 botaoAvancar = document.getElementById("btnAvancar");
 
-// Os ids dos slides e das bolinhas, na ordem em que aparecem
+// Lista de Slides
 slides   = ["slide1", "slide2", "slide3"];
 bolinhas = ["bolinha1", "bolinha2", "bolinha3"];
 
-// Começa no primeiro slide (o primeiro item do array é o 0)
 indice = 0;
 
+// Início
 window.onload = inicio;
 
 function inicio(){
@@ -37,7 +23,7 @@ function inicio(){
     botaoVoltar.onclick  = voltarSlide;
     botaoAvancar.onclick = avancarSlide;
 
-    // Cada bolinha leva para o seu slide
+    // Bolinhas Carrossel
     document.getElementById("bolinha1").onclick = function(){
         irParaSlide(0);
     };
@@ -52,13 +38,13 @@ function inicio(){
     automaticoSlide();
 }
 
+// Voltar Slide
 function voltarSlide(){
 
     if(indice > 0){
         indice--;
     }
     else{
-        // Estava no primeiro: vai para o último
         indice = slides.length - 1;
     }
 
@@ -67,13 +53,13 @@ function voltarSlide(){
     automaticoSlide();
 }
 
+// Avançar Slide
 function avancarSlide(){
 
     if(indice < slides.length - 1){
         indice++;
     }
     else{
-        // Estava no último: volta para o primeiro
         indice = 0;
     }
 
@@ -82,6 +68,7 @@ function avancarSlide(){
     automaticoSlide();
 }
 
+// Ir para Slide
 function irParaSlide(numero){
 
     indice = numero;
@@ -91,14 +78,13 @@ function irParaSlide(numero){
     automaticoSlide();
 }
 
-// Troca de slide sozinho a cada 8000 milissegundos (8 segundos).
-// Para mudar o tempo, troque o 8000.
+// Tempo Automático
 function automaticoSlide(){
 
     temporizador = setInterval(avancarSlide, 8000);
 }
 
-// Esconde todos os slides e mostra só o do indice atual
+// Mostrar Slide
 function mostrarSlide(){
 
     for(var i = 0; i < slides.length; i++){

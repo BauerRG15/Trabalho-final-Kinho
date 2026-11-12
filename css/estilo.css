@@ -1,23 +1,7 @@
 @charset "utf-8";
-/* ==========================================================
-   Bar Purple Rain - folha de estilo do site
-   Organização: 0) fontes  1) base  2) cabeçalho  3) carrossel
-                4) seções e cartões  5) páginas internas
-                6) rodapé  7) responsividade (media queries)
-
-   Cores do site:
-     #120a1c  fundo escuro da página
-     #21133a  fundo dos cartões
-     #7b2ff7  roxo dos botões e do menu
-     #5dff9b  verde do logo (sobretítulos e preços)
-     #ffffff  títulos
-     #d6cdea  texto comum (lilás claro)
-   ========================================================== */
 
 
-/* ---------- 0) FONTES DO BAR ---------- */
-/* @font-face carrega uma fonte que está na pasta fontes/.
-   Depois é só usar o nome dela no font-family. */
+/* Fontes */
 @font-face {
     font-family: "Chakra Petch";
     src: url("../fontes/ChakraPetch-Regular.ttf");
@@ -29,7 +13,7 @@
 }
 
 
-/* ---------- 1) BASE ---------- */
+/* Base */
 * {
     margin: 0;
     padding: 0;
@@ -57,7 +41,8 @@ h1, h2, h3 {
     line-height: 1.2;
 }
 
-/* Frase pequena em cima de um título */
+
+/* Sobretítulo */
 .sobretitulo {
     font-size: 14px;
     font-weight: bold;
@@ -70,7 +55,7 @@ h1, h2, h3 {
 }
 
 
-/* ---------- 2) CABEÇALHO ---------- */
+/* Cabeçalho */
 .cabecalho {
     background-color: #000000;
     display: flex;
@@ -83,6 +68,8 @@ h1, h2, h3 {
     height: 64px;
 }
 
+
+/* Menu */
 .menu ul {
     display: flex;
     gap: 6px;
@@ -103,28 +90,24 @@ h1, h2, h3 {
 }
 
 
-/* ---------- 3) CARROSSEL ---------- */
-/* position: relative no carrossel serve de referência
-   para as peças com position: absolute (legenda, setas e bolinhas) */
+/* Carrossel PC */
 .carrossel {
     position: relative;
     height: 560px;
     background-color: #1a0f2b;
 }
 
+
+/* Slides */
 .slide {
-    display: none; /* todos os slides começam escondidos */
+    display: none;
     height: 100%;
 }
 
-/* O primeiro slide já aparece ao abrir a página.
-   Depois o JavaScript mostra e esconde os slides com style.display */
 #slide1 {
     display: block;
 }
 
-/* Foto ou vídeo ocupam o slide todo.
-   object-fit: cover preenche o espaço sem esticar a imagem (corta a sobra) */
 .slide img,
 .slide video {
     width: 100%;
@@ -132,23 +115,21 @@ h1, h2, h3 {
     object-fit: cover;
 }
 
-/* Degradê que sobe um pouco por cima das fotos do carrossel.
-   ::after cria uma "faixa" no pé do carrossel, sem precisar de tag no HTML.
-   Vai do transparente até o mesmo roxo (#3b2266) que começa a seção de baixo,
-   então as duas partes se encostam sem linha de corte. */
+
+/* Degradê Carrossel */
 .carrossel::after {
     content: "";
     position: absolute;
     left: 0;
     bottom: 0;
     width: 100%;
-    height: 160px; /* quanto o degradê sobe na foto */
+    height: 160px;
     background-image: linear-gradient(transparent, #3b2266);
-    pointer-events: none; /* não atrapalha o clique nas bolinhas */
+    pointer-events: none;
 }
 
-/* Texto do slide, por cima da foto.
-   z-index: 1 deixa o texto, as setas e as bolinhas na frente do degradê */
+
+/* Texto Carrossel */
 .legenda {
     z-index: 1;
     position: absolute;
@@ -169,7 +150,8 @@ h1, h2, h3 {
     margin-bottom: 16px;
 }
 
-/* Setas de voltar e avançar */
+
+/* Setas Carrossel */
 .seta {
     z-index: 1;
     position: absolute;
@@ -196,7 +178,8 @@ h1, h2, h3 {
     right: 16px;
 }
 
-/* Bolinhas que mostram em qual slide está */
+
+/* Bolinhas Carrossel */
 .indicadores {
     z-index: 1;
     position: absolute;
@@ -220,7 +203,7 @@ h1, h2, h3 {
 }
 
 
-/* ---------- 4) SEÇÕES E CARTÕES ---------- */
+/* Seções */
 .secao {
     padding: 60px 5%;
 }
@@ -229,8 +212,8 @@ h1, h2, h3 {
     background-color: #1a0f2b;
 }
 
-/* Degradê da Home: começa num roxo mais claro e vai
-   suavemente até a cor do fundo do site (#120a1c) */
+
+/* Degradê Home */
 .degrade {
     background-image: linear-gradient(#3b2266, #120a1c);
 }
@@ -246,10 +229,11 @@ h1, h2, h3 {
     margin-bottom: 32px;
 }
 
-/* Cartões lado a lado com flexbox */
+
+/* Cartões */
 .cartoes {
     display: flex;
-    flex-wrap: wrap; /* se não couber, o cartão desce para a linha de baixo */
+    flex-wrap: wrap;
     gap: 30px;
 }
 
@@ -269,7 +253,8 @@ h1, h2, h3 {
     margin-bottom: 12px;
 }
 
-/* Cores dos cartões da Home */
+
+/* Cores Cartões Home */
 .roxo {
     background-color: #4a1a94;
 }
@@ -286,6 +271,7 @@ h1, h2, h3 {
     font-size: 14px;
     color: #5dff9b;
 }
+
 
 /* Botões */
 .botao {
@@ -311,15 +297,15 @@ h1, h2, h3 {
     background-color: #d6cdea;
 }
 
-/* Link de texto com seta */
+
+/* Links Cartões */
 .link-seta {
     color: #ffffff;
     font-weight: bold;
 }
 
 
-/* ---------- 5) PÁGINAS INTERNAS ---------- */
-/* Faixa do topo das páginas, com a foto da parede de fundo */
+/* Banner Páginas */
 .banner-pagina {
     background-image: url("../img/foto-parede-neon.jpg");
     background-size: cover;
@@ -334,14 +320,15 @@ h1, h2, h3 {
     font-size: 56px;
 }
 
-/* Duas colunas lado a lado (Sobre e Eventos) */
+
+/* Duas Colunas */
 .duas-colunas {
     display: flex;
     gap: 40px;
 }
 
 .coluna {
-    flex: 1; /* as duas colunas ficam com a mesma largura */
+    flex: 1;
 }
 
 .duas-colunas h2 {
@@ -361,7 +348,8 @@ h1, h2, h3 {
     border-bottom: 1px solid #3c1a78;
 }
 
-/* Galeria de fotos (página Sobre) */
+
+/* Galeria Sobre */
 .galeria {
     display: flex;
     flex-wrap: wrap;
@@ -376,7 +364,7 @@ h1, h2, h3 {
 .galeria img {
     width: 100%;
     height: 320px;
-    object-fit: cover; /* as três fotos ficam do mesmo tamanho */
+    object-fit: cover;
     border-radius: 12px;
 }
 
@@ -386,11 +374,13 @@ h1, h2, h3 {
     color: #ffffff;
 }
 
-/* Foto ao lado da tabela (página Eventos) */
+
+/* Foto Eventos */
 .foto-coluna img {
     width: 100%;
     border-radius: 12px;
 }
+
 
 /* Cardápio */
 .lista-cardapio {
@@ -416,7 +406,8 @@ h1, h2, h3 {
     color: #5dff9b;
 }
 
-/* Tabela da agenda (página Eventos) */
+
+/* Tabela Eventos */
 .tabela-eventos {
     width: 100%;
     border-collapse: collapse;
@@ -433,17 +424,17 @@ h1, h2, h3 {
     color: #5dff9b;
 }
 
+
 /* Mapa */
 .mapa iframe {
     width: 100%;
     height: 450px;
-    /* border: 5px solid #7b2ff7; */
     border-radius: 12px;
-    pointer-events: none; /* o mapa ignora o clique, que vai para o link em volta */
+    pointer-events: none;
 }
 
 
-/* ---------- 6) RODAPÉ ---------- */
+/* Rodapé */
 .rodape {
     display: flex;
     justify-content: space-between;
@@ -465,17 +456,14 @@ h1, h2, h3 {
 }
 
 
-/* ---------- 7) RESPONSIVIDADE ---------- */
-
-/* Tablets: até 900px */
 @media screen and (max-width: 900px) {
-
+    /* Carrossel Tablet */
     .carrossel {
         height: 460px;
     }
 
     .legenda {
-        left: 80px;  /* deixa espaço para as setas */
+        left: 80px;
         right: 80px;
     }
 
@@ -485,11 +473,10 @@ h1, h2, h3 {
     }
 }
 
-/* Celulares: até 600px */
 @media screen and (max-width: 600px) {
-
+    /* Menu Celular */
     .cabecalho {
-        flex-direction: column; /* logo em cima, menu embaixo */
+        flex-direction: column;
         gap: 8px;
     }
 
@@ -503,6 +490,7 @@ h1, h2, h3 {
         font-size: 14px;
     }
 
+    /* Carrossel Celular */
     .carrossel {
         height: 440px;
     }
@@ -519,9 +507,10 @@ h1, h2, h3 {
     }
 
     .seta {
-        display: none; /* no celular a navegação fica nas bolinhas */
+        display: none;
     }
 
+    /* Páginas Celular */
     .secao {
         padding: 40px 5%;
     }
@@ -531,7 +520,7 @@ h1, h2, h3 {
     }
 
     .duas-colunas {
-        flex-direction: column; /* colunas viram uma embaixo da outra */
+        flex-direction: column;
     }
 
     .banner-pagina h1 {
