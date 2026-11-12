@@ -383,6 +383,8 @@ h1, h2, h3 {
 /* Foto Eventos */
 .foto-coluna img {
     width: 100%;
+    height: 320px;
+    object-fit: cover;
     border-radius: 12px;
 }
 
@@ -431,6 +433,10 @@ h1, h2, h3 {
 
 
 /* Mapa */
+.mapa {
+    display: block;
+}
+
 .mapa iframe {
     width: 100%;
     height: 450px;
