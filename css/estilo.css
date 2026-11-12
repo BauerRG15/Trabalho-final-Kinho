@@ -115,6 +115,11 @@ h1, h2, h3 {
     object-fit: cover;
 }
 
+/* Foto Drinks */
+#slide3 img {
+    object-position: top;
+}
+
 
 /* Degradê Carrossel */
 .carrossel::after {
