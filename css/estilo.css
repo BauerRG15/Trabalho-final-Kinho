@@ -210,6 +210,12 @@ h1, h2, h3 {
     background-color: #1a0f2b;
 }
 
+/* Degradê da Home: começa num roxo mais claro e vai
+   suavemente até a cor do fundo do site (#120a1c) */
+.degrade {
+    background-image: linear-gradient(#3b2266, #120a1c);
+}
+
 .titulo-secao {
     font-size: 34px;
     text-align: center;
