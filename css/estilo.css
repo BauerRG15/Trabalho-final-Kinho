@@ -115,6 +115,11 @@ h1, h2, h3 {
     object-fit: cover;
 }
 
+/* Foto Parede Neon */
+#slide2 img {
+    object-position: center 30%;
+}
+
 /* Foto Drinks */
 #slide3 img {
     object-position: top;
@@ -314,7 +319,7 @@ h1, h2, h3 {
 .banner-pagina {
     background-image: url("../img/foto-parede-neon.jpg");
     background-size: cover;
-    background-position: center;
+    background-position: center 30%;
     padding: 60px 5%;
     text-align: center;
 }
@@ -370,6 +375,7 @@ h1, h2, h3 {
     width: 100%;
     height: 320px;
     object-fit: cover;
+    object-position: center 25%;
     border-radius: 12px;
 }
 
@@ -385,6 +391,7 @@ h1, h2, h3 {
     width: 100%;
     height: 320px;
     object-fit: cover;
+    object-position: center 25%;
     border-radius: 12px;
 }
 
